@@ -1,0 +1,15 @@
+{
+  "name": "brunodantas",
+  "owner": {
+    "name": "Bruno Dantas",
+    "email": "bruno.d@workandtravelguide.org"
+  },
+  "description": "Marketplace hosting the sdlc plugin — standalone skills for the spec, verification, and review loop.",
+  "plugins": [
+    {
+      "name": "sdlc",
+      "source": "./",
+      "description": "Five skills for the SDLC loop: rank architectural characteristics, derive a spec's cases, freeze a unit's test oracle, harden it adversarially, and write the PR description as a PR Map."
+    }
+  ]
+}
