@@ -51,8 +51,9 @@ with a pointer rather than maintained in parallel.
 
 ## Status
 
-Pre-release: five skills, nothing tagged yet. They are used daily in private repos, and the
-public collection is what that use has settled into. Interfaces may still move before `0.1.0`.
+`0.1.0`, the first public release: five skills. They are used daily in private repos, and the
+public collection is what that use has settled into. Expect the interfaces to keep moving through
+`0.x`; see the [changelog](CHANGELOG.md).
 
 ## License
 

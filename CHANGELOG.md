@@ -6,6 +6,10 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-08-03
+
+First public release.
+
 ### Added
 
 - Repo skeleton: MIT license, README, this changelog, and the `skills/<name>/SKILL.md` layout.
