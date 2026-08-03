@@ -9,6 +9,9 @@ All notable changes to this collection are documented here. The format follows
 ### Added
 
 - Repo skeleton: MIT license, README, this changelog, and the `skills/<name>/SKILL.md` layout.
+- `scripts/validate_skills.py`, run by a `validate` workflow on every push and pull request: it
+  checks each skill's frontmatter (`name` matches its directory, `description` present and within
+  the length limit, no duplicates) and that every relative Markdown link in the repo resolves.
 - `ilities` — rank architectural characteristics at any scope (a whole system, a service, a module,
   or one live decision), name the trade-offs, flag any ranking that inverts the project default, and
   offer to land the call in `docs/architecture.md`.
