@@ -6,6 +6,14 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- `scripts/validate_skills.py` reads frontmatter with a real YAML parser instead of splitting it
+  line by line, so the block is validated the way the loader parses it. The unquoted colon that
+  broke three descriptions in 0.2.0 passed the old check silently; it now fails with the parser's
+  own error. Values that parse to a non-string (`description: yes`) are rejected too. The
+  `validate` workflow installs PyYAML.
+
 ## [0.2.0] - 2026-08-03
 
 ### Added

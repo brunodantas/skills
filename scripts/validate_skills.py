@@ -9,6 +9,11 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ModuleNotFoundError:
+    sys.exit("PyYAML is required: pip install pyyaml")
+
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
 
@@ -28,19 +33,23 @@ def fail(path, message):
 
 
 def parse_frontmatter(text):
-    """Return the flat key/value frontmatter block, or None if it is absent or unterminated."""
+    """Return the frontmatter mapping. Raises ValueError if it is absent, unterminated, or not YAML.
+
+    Frontmatter is parsed the way the loader parses it, with a real YAML parser: a hand-rolled
+    line splitter accepts blocks a strict parser rejects, and a rejected block reaches the model
+    with no fields at all.
+    """
     if not text.startswith("---\n"):
-        return None
+        raise ValueError("missing or unterminated `---` frontmatter block")
     end = text.find("\n---\n", 3)
     if end == -1:
-        return None
-    fields = {}
-    for line in text[4:end].splitlines():
-        if not line.strip() or line.startswith("#") or line.startswith(" "):
-            continue
-        key, sep, value = line.partition(":")
-        if sep:
-            fields[key.strip()] = value.strip().strip('"').strip("'")
+        raise ValueError("missing or unterminated `---` frontmatter block")
+    try:
+        fields = yaml.safe_load(text[4:end])
+    except yaml.YAMLError as exc:
+        raise ValueError(f"frontmatter is not valid YAML: {' '.join(str(exc).split())}") from exc
+    if not isinstance(fields, dict):
+        raise ValueError("frontmatter is not a YAML mapping")
     return fields
 
 
@@ -50,20 +59,26 @@ def check_skill(skill_dir):
         fail(skill_dir, "no SKILL.md")
         return None
 
-    fields = parse_frontmatter(skill_md.read_text())
-    if fields is None:
-        fail(skill_md, "missing or unterminated `---` frontmatter block")
+    try:
+        fields = parse_frontmatter(skill_md.read_text())
+    except ValueError as exc:
+        fail(skill_md, str(exc))
         return None
 
     name = fields.get("name")
     if not name:
         fail(skill_md, "frontmatter has no `name`")
+    elif not isinstance(name, str):
+        fail(skill_md, f"`name` is {type(name).__name__}, not a string; quote it")
+        name = None
     elif name != skill_dir.name:
         fail(skill_md, f"`name: {name}` does not match directory `{skill_dir.name}`")
 
     description = fields.get("description", "")
     if not description:
         fail(skill_md, "frontmatter has no `description`")
+    elif not isinstance(description, str):
+        fail(skill_md, f"`description` is {type(description).__name__}, not a string; quote it")
     elif len(description) > MAX_DESCRIPTION:
         fail(skill_md, f"description is {len(description)} chars, over the {MAX_DESCRIPTION} limit")
 
