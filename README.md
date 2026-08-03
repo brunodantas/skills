@@ -7,8 +7,32 @@ A collection of standalone [Agent Skills](https://agentskills.io) for the SDLC l
 
 ## Installation
 
+Copy the skills into a project, under whatever agent directory it uses:
+
 ```bash
 npx skills@latest add brunodantas/skills
+```
+
+Or install them as a Claude Code plugin, which keeps one copy and updates in place:
+
+```shell
+/plugin marketplace add brunodantas/skills
+/plugin install sdlc@brunodantas
+```
+
+Plugin skills are namespaced, so they run as `/sdlc:to-tests` rather than `/to-tests`. To hand a
+whole team the collection, commit the marketplace to the project's `.claude/settings.json` and
+they are prompted to install it on first trust of the repo:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "brunodantas": {
+      "source": { "source": "github", "repo": "brunodantas/skills" }
+    }
+  },
+  "enabledPlugins": { "sdlc@brunodantas": true }
+}
 ```
 
 ## Skills
@@ -51,9 +75,9 @@ with a pointer rather than maintained in parallel.
 
 ## Status
 
-`0.1.0`, the first public release: five skills. They are used daily in private repos, and the
-public collection is what that use has settled into. Expect the interfaces to keep moving through
-`0.x`; see the [changelog](CHANGELOG.md).
+`0.2.0`: five skills, installable as files or as a plugin. They are used daily in private repos,
+and the public collection is what that use has settled into. Expect the interfaces to keep moving
+through `0.x`; see the [changelog](CHANGELOG.md).
 
 ## License
 

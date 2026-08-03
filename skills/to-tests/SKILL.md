@@ -1,6 +1,6 @@
 ---
 name: to-tests
-description: Turn one unit of work into its frozen oracle: the tests plus the stub interfaces they import, offered as a single freeze commit. Use once per unit (a ticket, an issue, a described change), after its cases are settled and before any implementation, when the user says "to-tests", "freeze the oracle", or "write the tests first".
+description: Turn one unit of work into its frozen oracle — the tests plus the stub interfaces they import, offered as a single freeze commit. Use once per unit (a ticket, an issue, a described change), after its cases are settled and before any implementation, when the user says "to-tests", "freeze the oracle", or "write the tests first".
 argument-hint: "[ticket or issue path, or the cases themselves]"
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit
 ---

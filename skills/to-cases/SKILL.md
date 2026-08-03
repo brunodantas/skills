@@ -1,6 +1,6 @@
 ---
 name: to-cases
-description: Give a spec the numbered `## Cases` section that a test-writing session can encode: derived from the behaviours the spec describes and the unit's acceptance criteria, checked for holes, confirmed with the user, then landed in a durable file. Use when a spec has no cases, when its cases miss an acceptance criterion, or when the user says "to-cases", "derive the cases", or "the spec has no cases".
+description: Give a spec the numbered `## Cases` section that a test-writing session can encode — derived from the behaviours the spec describes and the unit's acceptance criteria, checked for holes, confirmed with the user, then landed in a durable file. Use when a spec has no cases, when its cases miss an acceptance criterion, or when the user says "to-cases", "derive the cases", or "the spec has no cases".
 argument-hint: "[spec path] [ticket or issue path]"
 allowed-tools: Read, Grep, Glob, Write, Edit
 ---

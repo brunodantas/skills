@@ -6,6 +6,22 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-03
+
+### Added
+
+- The collection installs as a Claude Code plugin as well as a file copy: `.claude-plugin/plugin.json`
+  declares the repo root as the `sdlc` plugin, and `.claude-plugin/marketplace.json` publishes it
+  under the `brunodantas` marketplace. A team can commit the marketplace to its project settings
+  and get updates by pushing here, instead of re-copying the files.
+
+### Fixed
+
+- `to-cases`, `to-tests`, and `harden-tests` had a colon inside an unquoted `description:` scalar,
+  which is a YAML parse error: strict parsers drop every frontmatter field, leaving the skill with
+  no description to match a request against. `scripts/validate_skills.py` parses frontmatter line by
+  line and could not see it.
+
 ## [0.1.0] - 2026-08-03
 
 First public release.

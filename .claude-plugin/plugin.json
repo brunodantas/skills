@@ -1,0 +1,14 @@
+{
+  "name": "sdlc",
+  "displayName": "SDLC skills",
+  "description": "Standalone skills for the spec, verification, and review loop: ilities, to-cases, to-tests, harden-tests, build-pr. Each runs on its own, with no setup step.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Bruno Dantas",
+    "email": "bruno.d@workandtravelguide.org"
+  },
+  "homepage": "https://github.com/brunodantas/skills",
+  "repository": "https://github.com/brunodantas/skills",
+  "license": "MIT",
+  "keywords": ["claude-code", "skills", "testing", "architecture", "pull-request", "spec"]
+}
