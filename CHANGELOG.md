@@ -6,6 +6,21 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `build-pr` resolves the remote `HEAD` and the current branch through `` !`command` `` injection,
+  so both arrive with the skill instead of costing a round trip. Only the two base-independent
+  facts are injected; everything computed from the base still runs once the base is settled.
+- `harden-tests` declares `allowed-tools`, which it never had. It was the one skill in the
+  collection paying a permission prompt for the test command it exists to run.
+
+### Changed
+
+- `build-pr` narrows its blanket `Bash` grant to `Bash(git *)` and `Bash(gh *)`, the only two
+  binaries it invokes. `to-tests` and `harden-tests` keep the blanket grant on purpose: the test
+  command they run belongs to the consuming repo and cannot be enumerated here.
+- `ilities` drops `Bash`, having never run a shell command.
+
 ### Fixed
 
 - `scripts/validate_skills.py` reads frontmatter with a real YAML parser instead of splitting it

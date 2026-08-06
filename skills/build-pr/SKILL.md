@@ -2,7 +2,7 @@
 name: build-pr
 description: Write the current branch's pull request description as a PR Map — a one-sentence summary, a review tier, evidence-backed claims, and every changed file bucketed by how hard it is to read. Opens the PR if none exists, refreshes it in place if one does, offers a few inline comments on the riskiest hunks, and never pushes. Use when the user says "build the PR", "write the PR description", or asks for a PR body.
 argument-hint: "[base-branch or PR focus]"
-allowed-tools: Bash, Read, Grep, Glob
+allowed-tools: Bash(git *) Bash(gh *) Read Grep Glob
 ---
 
 ## Purpose
@@ -50,16 +50,19 @@ evidence it cites — a review pass, a test run, or CI does that first.
 
 ### 1. Gather
 
-Base = the argument if given, else the branch the remote points its `HEAD` at:
+Two facts that never depend on the base, resolved before you read this:
+
+- Remote `HEAD`: !`git symbolic-ref refs/remotes/origin/HEAD --short`
+- Current branch: !`git rev-parse --abbrev-ref HEAD`
+
+Base = the argument if given, else the branch that remote `HEAD` names. With it settled:
 
 ```bash
-git symbolic-ref refs/remotes/origin/HEAD --short   # -> origin/<default-branch>
-git rev-parse --abbrev-ref HEAD
 git log <base>..HEAD --oneline
 git diff <base>...HEAD --stat
 ```
 
-If that ref is missing — some clones never set it — either run
+If the remote `HEAD` line above is an error instead of a ref — some clones never set it — either run
 `git remote set-head origin -a` or ask the user which branch to target. **Never assume `main`**:
 a repo that merges to `dev` or `develop` would get a diff against the wrong base, and every
 claim in the description would be computed from it.

@@ -2,7 +2,7 @@
 name: ilities
 description: Rank a system's architectural characteristics (nonfunctional requirements, "-ilities") at any scope, from a whole system down to one live decision, name the trade-offs, and offer to document the call. Use when starting a project or service, when a nonfunctional conflict blocks the next step (performance against reliability, security against usability), or when the user says "-ilities", "architectural characteristics", "nonfunctional requirements", or "architecture doc".
 argument-hint: "[scope: a system, a service, a module, or the decision in front of you]"
-allowed-tools: Bash, Read, Grep, Glob, Write, Edit
+allowed-tools: Read, Grep, Glob, Write, Edit
 ---
 
 ## Purpose
