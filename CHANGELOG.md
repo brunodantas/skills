@@ -6,6 +6,8 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-18
+
 ### Added
 
 - Every skill states the **opinionated ask** convention: wherever it puts a decision to the user, it
