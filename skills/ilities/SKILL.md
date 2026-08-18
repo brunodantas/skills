@@ -32,6 +32,13 @@ The scope is whatever you are pointed at, and it is the first thing to settle:
 **This skill writes nothing on its own.** It produces the ranking, then offers to land it. Accepting
 the offer is a separate step you take deliberately.
 
+## Opinionated asks
+
+Wherever this skill puts a decision to the user, lead with your pick: mark it `➡️`, give the
+one-line grounds, then ask. The recommendation saves them composing an answer, it never stands in
+for one, so wait for theirs either way. Where you have no grounds to pick, say so rather than
+inventing one. The marker belongs in the conversation, never in a file you write.
+
 ## Process
 
 1. **Fix the scope.** Take it from the argument. Invoked bare, infer it from context (the decision
@@ -41,8 +48,8 @@ the offer is a separate step you take deliberately.
    or equivalent), and any existing `docs/architecture.md`. Don't elicit what the docs already state,
    confirm and extend it. **If a project-level ranking exists, it is the default this scope starts
    from.**
-3. **Elicit the candidates.** At system or service scope, offer the standard menu and have the user
-   pick the few that actually drive it:
+3. **Elicit the candidates.** At system or service scope, offer the standard menu with the few you
+   would pick already marked `➡️` from the context you gathered, and have the user rule on them:
    - *Operational:* availability, reliability, scalability, elasticity, performance, recoverability,
      deployability, observability.
    - *Structural:* maintainability, testability, extensibility, modularity, portability, security,
@@ -63,7 +70,8 @@ the offer is a separate step you take deliberately.
    you could *test*: a number, a budget, an SLO. "Fast" is not a characteristic; "p95 < 200ms under
    1k rps" is. For a one-off ruling, the useful measurable is different: what observation would tell
    you this call was wrong.
-7. **Offer to land it.** Propose one target (see below), confirm, then write. Never write unattended.
+7. **Offer to land it.** Propose one target (see below), marked `➡️`, confirm, then write. Never
+   write unattended.
 
 ## Output format
 
@@ -107,8 +115,8 @@ ranking above, and why.>
 
 ## Landing it
 
-Propose exactly one target, based on the scope and on whether the ranking inverted the project
-default. Confirm before writing.
+Propose exactly one target, marked `➡️`, based on the scope and on whether the ranking inverted
+the project default. Confirm before writing.
 
 | Scope | Proposed target |
 |---|---|
@@ -128,7 +136,7 @@ default. Confirm before writing.
 - **Measurable over adjectival.** If you can't imagine a test, a number, or a falsifying observation
   for it, sharpen it until you can.
 - **Be opinionated, then let the user override.** Propose a ranking from the context; don't hand them
-  a blank menu.
+  a blank menu. See [Opinionated asks](#opinionated-asks).
 - **Keep it short.** Resist the urge to be comprehensive.
 
 ## When not to reach for this

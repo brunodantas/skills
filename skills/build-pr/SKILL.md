@@ -46,6 +46,13 @@ evidence it cites — a review pass, a test run, or CI does that first.
   output, review findings, CI. A claim with nothing to point at is labelled `UNVERIFIED` — that
   label is the signal to go and get the evidence, not a blank to fill in here.
 
+## Opinionated asks
+
+Wherever this skill puts a decision to the user, lead with your pick: mark it `➡️`, give the
+one-line grounds, then ask. The recommendation saves them composing an answer, it never stands in
+for one, so wait for theirs either way. Where you have no grounds to pick, say so rather than
+inventing one. The marker belongs in the conversation, never in a file you write.
+
 ## Process
 
 ### 1. Gather
@@ -62,10 +69,12 @@ git log <base>..HEAD --oneline
 git diff <base>...HEAD --stat
 ```
 
-If the remote `HEAD` line above is an error instead of a ref — some clones never set it — either run
-`git remote set-head origin -a` or ask the user which branch to target. **Never assume `main`**:
-a repo that merges to `dev` or `develop` would get a diff against the wrong base, and every
-claim in the description would be computed from it.
+If the remote `HEAD` line above is an error instead of a ref — some clones never set it — don't
+hand over two options. Run `git remote set-head origin -a`, and mark what it resolves to as your
+pick `➡️` before going further. Where that fails too, read `git branch -r` and the recent merge
+commits for the branch the work actually lands on, name it as your pick, and ask. **Never assume
+`main`**: a repo that merges to `dev` or `develop` would get a diff against the wrong base, and
+every claim in the description would be computed from it.
 
 Read the meaty diffs in full.
 
@@ -140,8 +149,9 @@ confidence is low **or** the blast radius is high. Aim for ≤5 per PR; a hunk t
 high-confidence and low-blast-radius gets none.
 
 **Propose them before posting.** List each one as file, line, and the sentence you would write,
-and send only the ones the user approves. These land in every reviewer's queue, so they are the
-user's to authorise, not a side effect of asking for a description.
+marked `➡️` as the set you would post, and send only the ones the user approves. These land in
+every reviewer's queue, so they are the user's to authorise, not a side effect of asking for a
+description.
 
 ```bash
 gh api "repos/{owner}/{repo}/pulls/<N>/comments" \
