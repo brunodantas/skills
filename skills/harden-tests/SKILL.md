@@ -2,6 +2,7 @@
 name: harden-tests
 description: Adversarially check tests against the cases they claim to encode — fresh sub-agents each name a wrong implementation that still passes, and every counterexample gets tightened away. Two bounded rounds, then a written list of what could not be closed. Use when the user says "harden the tests", "adversarial pass", or asks how weak a test file is.
 argument-hint: "[test paths]"
+allowed-tools: Bash, Read, Grep, Glob, Edit
 ---
 
 # Harden Tests
