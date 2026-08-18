@@ -8,6 +8,18 @@ All notable changes to this collection are documented here. The format follows
 
 ### Added
 
+- Every skill states the **opinionated ask** convention: wherever it puts a decision to the user, it
+  leads with its pick, marks it `➡️`, and waits for the answer anyway. Applied at ten decision
+  points across the five skills. Where a skill has no grounds to pick, it says so rather than
+  inventing one, which keeps the test-runner question in `to-tests` and `harden-tests` an honest
+  ask.
+- `to-cases` answers the holes it finds instead of only naming them, `to-tests` recommends whether
+  the oracle is worth hardening and which files to point it at, `harden-tests` recommends a
+  disposition for the counterexamples that are unreachable through the fixtures, and `build-pr`
+  picks a base branch instead of offering two ways to find one.
+- `docs/adr/0001-per-skill-duplication-over-a-shared-rules-file.md` records why the convention is
+  repeated in five files rather than linked from one.
+
 - `build-pr` resolves the remote `HEAD` and the current branch through `` !`command` `` injection,
   so both arrive with the skill instead of costing a round trip. Only the two base-independent
   facts are injected; everything computed from the base still runs once the base is settled.

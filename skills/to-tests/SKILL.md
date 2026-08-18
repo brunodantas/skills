@@ -56,6 +56,13 @@ little else.
 Say which shape you are writing, and roughly how many cases, before you write any. A
 prefactoring that lands twenty-nine tests has misread its unit.
 
+## Opinionated asks
+
+Wherever this skill puts a decision to the user, lead with your pick: mark it `➡️`, give the
+one-line grounds, then ask. The recommendation saves them composing an answer, it never stands in
+for one, so wait for theirs either way. Where you have no grounds to pick, say so rather than
+inventing one. The marker belongs in the conversation, never in a file you write.
+
 ## Process
 
 ### 1. Ground, and settle the case list
@@ -116,9 +123,9 @@ distinguish anything) looks identical from the outside, and only you have just r
 ### 5. Offer the freeze commit
 
 Prepare one commit, on the unit's topic branch, staging the test files and the stub files by
-explicit path. Show the staged set and the subject you propose, and **land it only on a yes**.
-The freeze is the one thing here you cannot quietly take back, which is exactly why it is the
-user's to press.
+explicit path. Show the staged set and the subject you propose, marked `➡️`, and **land it only
+on a yes**. The freeze is the one thing here you cannot quietly take back, which is exactly why
+it is the user's to press.
 
 The subject must contain the phrase:
 
@@ -149,8 +156,11 @@ Two things follow, and both belong to other sessions.
 name wrong implementations that still pass, tightens what they find, and writes down what it
 could not close. It is the difference between an oracle nobody attacked and one that survived
 being attacked, and it costs several concurrent agents. Name it as the next step, say roughly
-what it will spend, and let the user decide. A tightening pass strengthens the oracle, so it may
-run after the freeze: it offers its changes as their own commit on top.
+what it will spend, and mark your pick `➡️`: whether this oracle is worth a pass at all, and if
+it is, which of the files you just wrote to point it at. Rank them by how much of the contract
+rides on them against how little their assertions actually pin. If nothing in the suite looks
+weak, recommending against the spend is the useful answer. A tightening pass strengthens the
+oracle, so it may run after the freeze: it offers its changes as their own commit on top.
 
 **Then implementation, in a fresh session.** The frozen oracle is not that session's to weaken.
 The fresh context is the mechanism: a session that watched the oracle being written knows which

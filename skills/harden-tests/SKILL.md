@@ -24,6 +24,13 @@ rather than weakening it, so the fixes are offered as their own commit on top of
   `docs/agents/testing.md` names, or failing that its testing doc, contributing guide, or
   package scripts. Where no doc names one, ask rather than inferring a runner from the lockfile.
 
+## Opinionated asks
+
+Wherever this skill puts a decision to the user, lead with your pick: mark it `➡️`, give the
+one-line grounds, then ask. The recommendation saves them composing an answer, it never stands in
+for one, so wait for theirs either way. Where you have no grounds to pick, say so rather than
+inventing one. The marker belongs in the conversation, never in a file you write.
+
 ## Process
 
 **Two rounds, the first wide and parallel, the second narrow.** Then stop.
@@ -89,6 +96,12 @@ decisions live. List the counterexamples you judged unreachable through the fixt
 scope, or unencodable single-threaded, and say which of the three each one is. Naming them is
 the deliverable; chasing them is not.
 
+The written list stands as it is. Alongside it, **in the conversation only**, give the items you
+judged *unreachable through the fixtures* a `➡️` pick: for each, either the fixture change that
+would bring it back in range, or accept-and-why. They are the only bucket where a choice exists.
+Out of scope and unencodable are terminal by their own definition, and a recommendation on those
+is noise dressed as advice. Recommending a disposition is not chasing it.
+
 If the pass ran without sub-agents, say so under the same heading. Both are statements about how
 much this pass is worth, and a reader who takes a degraded one for the real thing will trust the
 suite further than it earned.
@@ -96,8 +109,8 @@ suite further than it earned.
 ## Offer the commit
 
 Tightened tests are edits sitting in the working tree, and after a freeze they contradict a
-commit that claims to be the oracle. Propose landing them: the test files you changed, staged by
-explicit path, with a subject naming the hardening. Then let the user commit.
+commit that claims to be the oracle. Propose landing them, marked `➡️`: the test files you
+changed, staged by explicit path, with a subject naming the hardening. Then let the user commit.
 
 Never commit unattended. No skill in this collection does: `/to-tests` offers the freeze, and
 this pass offers the tightening that strengthens it. Both are the user's to land.

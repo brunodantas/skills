@@ -53,6 +53,13 @@ format is the fallback.
 Read no implementation. Cases state what the spec asked for; existing code is at best a
 paraphrase of that and at worst the bug.
 
+## Opinionated asks
+
+Wherever this skill puts a decision to the user, lead with your pick: mark it `➡️`, give the
+one-line grounds, then ask. The recommendation saves them composing an answer, it never stands in
+for one, so wait for theirs either way. Where you have no grounds to pick, say so rather than
+inventing one. The marker belongs in the conversation, never in a file you write.
+
 ## Process
 
 ### 1. Locate the sources
@@ -91,7 +98,7 @@ Before showing it to anyone:
 - Where the spec keeps an out-of-scope list, no case covers something on it.
 
 A behaviour whose refusals you cannot enumerate without guessing is a hole in the spec, not
-something to paper over: name it in step 4 and let the user answer it.
+something to paper over: name it in step 4, with the answer you would give, and let the user rule.
 
 ### 4. Confirm the list, and where it goes
 
@@ -102,7 +109,13 @@ which omission was an accident.
 The holes are why this comes first. A guessed case that lands in the spec ahead of the question
 is the next session's requirement, and nobody re-litigates a list they find already written.
 
-**Propose one target in the same breath**, and confirm it:
+**Every hole is an opinionated ask.** Give each one the answer you would write if the call were
+yours, marked `➡️`, and the one line that makes it your pick: what in the spec, the surrounding
+code, or the sibling behaviours points that way. A hole handed over bare makes the user do the
+deriving you were invoked to do. Where nothing in the material points either way, say that and ask
+straight; a manufactured pick on a genuine unknown is worse than no pick at all.
+
+**Propose one target in the same breath**, marked `➡️`, and confirm it:
 
 | What the repo has | Proposed target |
 |---|---|
