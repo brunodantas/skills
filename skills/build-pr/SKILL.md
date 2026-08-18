@@ -2,7 +2,7 @@
 name: build-pr
 description: Write the current branch's pull request description as a PR Map — a one-sentence summary, a review tier, evidence-backed claims, and every changed file bucketed by how hard it is to read. Opens the PR if none exists, refreshes it in place if one does, offers a few inline comments on the riskiest hunks, and never pushes. Use when the user says "build the PR", "write the PR description", or asks for a PR body.
 argument-hint: "[base-branch or PR focus]"
-allowed-tools: Bash(git *) Bash(gh *) Read Grep Glob
+allowed-tools: Bash(git *), Bash(gh *), Read, Grep, Glob
 ---
 
 ## Purpose

@@ -25,6 +25,10 @@ LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 FENCE = re.compile(r"^```.*?^```", re.DOTALL | re.MULTILINE)
 CODE_SPAN = re.compile(r"`[^`\n]*`")
 
+# A tool grant is a tool name, optionally narrowed by a parenthesised pattern.
+TOOL_GRANT = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(\(.*\))?")
+GRANT_SEPARATORS = ",\t\n "
+
 failures = []
 
 
@@ -51,6 +55,29 @@ def parse_frontmatter(text):
     if not isinstance(fields, dict):
         raise ValueError("frontmatter is not a YAML mapping")
     return fields
+
+
+def split_grants(value):
+    """Split an `allowed-tools` string into entries.
+
+    The field accepts either separator, so entries break on top-level commas and whitespace both,
+    while a `(...)` pattern keeps the spaces and commas inside it.
+    """
+    grants, depth, current = [], 0, []
+    for char in value:
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            depth = max(0, depth - 1)
+        if depth == 0 and char in GRANT_SEPARATORS:
+            if current:
+                grants.append("".join(current))
+                current = []
+            continue
+        current.append(char)
+    if current:
+        grants.append("".join(current))
+    return grants
 
 
 def check_skill(skill_dir):
@@ -82,7 +109,32 @@ def check_skill(skill_dir):
     elif len(description) > MAX_DESCRIPTION:
         fail(skill_md, f"description is {len(description)} chars, over the {MAX_DESCRIPTION} limit")
 
+    check_allowed_tools(skill_md, fields)
+
     return name
+
+
+def check_allowed_tools(skill_md, fields):
+    """Every entry must be a tool name with an optional `(...)` pattern.
+
+    An unbalanced parenthesis is the typo that survives YAML and reaches the permission layer as a
+    grant matching nothing, so the skill silently runs without the tool it declared.
+    """
+    tools = fields.get("allowed-tools")
+    if tools is None:
+        return
+    if isinstance(tools, str):
+        grants = split_grants(tools)
+    elif isinstance(tools, list) and all(isinstance(tool, str) for tool in tools):
+        grants = [grant for tool in tools for grant in split_grants(tool)]
+    else:
+        fail(skill_md, f"`allowed-tools` is {type(tools).__name__}, not a string or list of strings")
+        return
+    if not grants:
+        fail(skill_md, "`allowed-tools` is empty; drop the field or list the tools")
+    for grant in grants:
+        if not TOOL_GRANT.fullmatch(grant):
+            fail(skill_md, f"`allowed-tools` entry `{grant}` is not a tool name with an optional `(...)` pattern")
 
 
 def check_links(md_file):

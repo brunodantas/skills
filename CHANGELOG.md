@@ -13,6 +13,9 @@ All notable changes to this collection are documented here. The format follows
   facts are injected; everything computed from the base still runs once the base is settled.
 - `harden-tests` declares `allowed-tools`, which it never had. It was the one skill in the
   collection paying a permission prompt for the test command it exists to run.
+- `scripts/validate_skills.py` checks that every `allowed-tools` entry is a tool name with an
+  optional `(...)` pattern, under either separator the field accepts. An unbalanced parenthesis
+  survives YAML and reaches the permission layer as a grant that matches nothing.
 
 ### Changed
 
