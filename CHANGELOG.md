@@ -6,6 +6,15 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `unslop`: cut AI tells from any writing (puffery, AI vocabulary, em-dash and boldface overuse,
+  chatbot phrases, hedging, jargon) and add human voice. The body is adapted verbatim from the
+  `unslop` skill in [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan
+  (cursor/plugins, MIT); only the frontmatter is rewritten to this collection's conventions. The
+  name matches upstream deliberately: pstack is Cursor-only, so nothing installable in Claude
+  Code is shadowed.
+
 ## [0.3.0] - 2026-08-18
 
 ### Added
