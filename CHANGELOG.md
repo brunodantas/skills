@@ -6,6 +6,13 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-08-23
+
+### Fixed
+
+- `unslop`: restore upstream's "Must always apply" trigger in the description, so the skill
+  loads automatically before writing prose instead of only on explicit request.
+
 ## [0.4.0] - 2026-08-23
 
 ### Added
