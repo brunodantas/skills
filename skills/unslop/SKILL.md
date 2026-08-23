@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing and add human voice — puffery, AI vocabulary, em-dash and boldface overuse, chatbot phrases, hedging, jargon. Use when the user says "unslop", asks to remove AI patterns, humanize or de-AI a text, or wants writing that stops sounding generated.
+description: Cut AI tells from any writing and add human voice — puffery, AI vocabulary, em-dash and boldface overuse, chatbot phrases, hedging, jargon. Must always apply — load before writing or editing any prose (docs, PRs, reports, commit messages), and when the user says "unslop", asks to remove AI patterns, or wants writing that stops sounding generated.
 argument-hint: "[file or text to unslop]"
 allowed-tools: Read, Grep, Glob, Write, Edit
 ---
