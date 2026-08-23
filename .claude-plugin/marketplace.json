@@ -9,7 +9,7 @@
     {
       "name": "sdlc",
       "source": "./",
-      "description": "Five skills for the SDLC loop: rank architectural characteristics, derive a spec's cases, freeze a unit's test oracle, harden it adversarially, and write the PR description as a PR Map."
+      "description": "Six skills for the SDLC loop: rank architectural characteristics, derive a spec's cases, freeze a unit's test oracle, harden it adversarially, write the PR description as a PR Map, and cut AI tells from writing."
     }
   ]
 }

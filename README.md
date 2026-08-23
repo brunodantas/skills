@@ -44,6 +44,7 @@ they are prompted to install it on first trust of the repo:
 | [`to-tests`](skills/to-tests/SKILL.md) | Turn one unit of work into a frozen oracle: tests plus stub interfaces, offered as one freeze commit. |
 | [`harden-tests`](skills/harden-tests/SKILL.md) | Adversarially check tests against the cases they claim to encode, then write down what the pass could not close. Uses sub-agents where it can, and says so when it can't. |
 | [`build-pr`](skills/build-pr/SKILL.md) | Write the branch's PR description as a PR Map: a review tier, evidence-backed claims, and every file bucketed read-hard / skim / skip. Best with GitHub and an authenticated `gh`; degrades to a body you paste. |
+| [`unslop`](skills/unslop/SKILL.md) | Cut AI tells from any writing and add human voice: puffery, AI vocabulary, em-dash and boldface overuse, chatbot phrases, hedging. Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack)'s `unslop` (MIT). |
 
 `to-cases` → `to-tests` → `harden-tests` chain, but each runs on its own. Take `to-cases` alone
 if all you want is a spec convention that spells out its cases, or `harden-tests` alone to
