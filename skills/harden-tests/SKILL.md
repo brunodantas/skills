@@ -11,7 +11,10 @@ Ask one closed question of every test — *name a wrong implementation that pass
 tighten whatever the answer finds.
 
 Runs on tests that already exist and already run: after `/to-tests` has frozen an oracle, or on
-its own against any suite whose weakness you suspect. Tightening strengthens a frozen oracle
+its own against any suite whose weakness you suspect. A suite `/to-tests` froze has already had
+every case refuted by a wrong implementation, so what is left to find here is an assertion that
+binds loosely. A suite from anywhere else may still hold a test that asserts nothing, which this
+pass reports as a counterexample like any other. Tightening strengthens a frozen oracle
 rather than weakening it, so the fixes are offered as their own commit on top of the freeze.
 
 ## What you need before starting

@@ -116,11 +116,52 @@ no test failing for a neighbour's reason. Each test either
 - **fails** at its own assertion or on its own not-implemented error, or
 - **passes**, because the behaviour it pins already exists.
 
-A green test at freeze time is a **regression guard**, and it is only legitimate if you say so.
-List them by name when you report, because the alternative reading (the test is too weak to
-distinguish anything) looks identical from the outside, and only you have just read both.
+A green test at freeze time is a **regression guard**: it passes because the behaviour it pins
+already exists. List them by name when you report. The alternative reading is that the test is too
+weak to distinguish anything, and step 5 is what tells the two apart.
 
-### 5. Offer the freeze commit
+### 5. Refute every case
+
+A red test at this point failed on the stub's not-implemented error, not on anything the case
+says. That red proves the import resolves and nothing else. A test that asserts nothing looks
+exactly the same from here.
+
+So refute each case: give the surface a **wrong implementation** that returns a plausible value
+contradicting what the case states, and never raises. Run the oracle's files again. The case has
+to fail **at its own assertion**. One that passes has **survived**, and a survivor blocks the
+freeze.
+
+Blocking, and every case rather than a sample. The failure this exists for is an oracle whose
+tests assert nothing at all, and a sample walks straight past it.
+
+**Read per-case results, or stop here.** This needs the runner to name which case failed. Where
+step 4's output cannot tell them apart, nothing can be refuted and the freeze waits until the
+tests run under a real test runner. A script that prints its results and exits 0 whatever
+happened is the case in point: every test in it survives, because none of them can fail.
+
+Red is what the runner reports, never what a test prints. Printed output can read as failure
+while the run reports success, and that gap is the whole defect.
+
+**The green tests get the same treatment from the other side.** A regression guard pins behaviour
+that already exists, so mutate that body rather than a stub. This is the one time you replace a
+working implementation, and only until the run finishes.
+
+**One wrong implementation may refute several cases at once.** A case refuted as collateral still
+counts, because its own test failed on its own assertion. Batch where a single mutation
+contradicts a group, and keep the accounting per case rather than per run.
+
+**Restore, then prove you restored.** Copy each file's exact bytes before you mutate it and `cmp`
+against the copy afterwards. Mutate implementation and stub files only. A test file that changed
+during this step means the check has damaged the thing it was checking.
+
+**Completion criterion:** every case named with the wrong implementation that refuted it, and
+every mutated file byte-identical to before. Report survivors by name, and fix them at step 3
+before the freeze is offered again.
+
+This gate asks whether an assertion binds at all. Whether it binds tightly is a different
+question, and it belongs to `/harden-tests` after the freeze.
+
+### 6. Offer the freeze commit
 
 Prepare one commit, on the unit's topic branch, staging the test files and the stub files by
 explicit path. Show the staged set and the subject you propose, marked `➡️`, and **land it only

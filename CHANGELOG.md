@@ -6,6 +6,17 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- `to-tests`: a new step 5 refutes every case before the freeze is offered. Each case gets a
+  wrong implementation that contradicts what it states, and has to fail at its own assertion; a
+  case that passes anyway blocks the freeze. Blocking rather than advisory, and every case rather
+  than a sample, because the failure it exists for is an oracle whose tests assert nothing. Where
+  the runner cannot report per-case results, the freeze waits. **This can stop a freeze commit
+  that 0.4.1 would have made.**
+- `harden-tests`: say what `to-tests` has already ruled out, so the adversarial pass looks for
+  assertions that bind loosely rather than assertions that are missing.
+
 ## [0.4.1] - 2026-08-23
 
 ### Fixed
