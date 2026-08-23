@@ -6,6 +6,8 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-23
+
 ### Added
 
 - `unslop`: cut AI tells from any writing (puffery, AI vocabulary, em-dash and boldface overuse,

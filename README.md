@@ -76,7 +76,7 @@ with a pointer rather than maintained in parallel.
 
 ## Status
 
-`0.2.0`: five skills, installable as files or as a plugin. They are used daily in private repos,
+`0.4.0`: six skills, installable as files or as a plugin. They are used daily in private repos,
 and the public collection is what that use has settled into. Expect the interfaces to keep moving
 through `0.x`; see the [changelog](CHANGELOG.md).
 
