@@ -2,7 +2,7 @@
   "name": "sdlc",
   "displayName": "SDLC skills",
   "description": "Standalone skills for the spec, verification, and review loop: ilities, to-cases, to-tests, harden-tests, build-pr, unslop. Each runs on its own, with no setup step.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": {
     "name": "Bruno Dantas",
     "email": "bruno.d@workandtravelguide.org"
