@@ -41,7 +41,7 @@ they are prompted to install it on first trust of the repo:
 |---|---|
 | [`ilities`](skills/ilities/SKILL.md) | Rank architectural characteristics at any scope, from a whole system down to one live decision, and offer to document the call. |
 | [`to-cases`](skills/to-cases/SKILL.md) | Derive a spec's numbered `## Cases` section from the behaviours it describes and a unit's acceptance criteria, and land it in a durable file. |
-| [`to-tests`](skills/to-tests/SKILL.md) | Turn one unit of work into a frozen oracle: tests plus stub interfaces, offered as one freeze commit. |
+| [`to-tests`](skills/to-tests/SKILL.md) | Turn one unit of work into a frozen oracle: tests plus stub interfaces, offered as one freeze commit. Refutes every case against a wrong implementation first, and blocks the freeze on any case that passes anyway. |
 | [`harden-tests`](skills/harden-tests/SKILL.md) | Adversarially check tests against the cases they claim to encode, then write down what the pass could not close. Uses sub-agents where it can, and says so when it can't. |
 | [`build-pr`](skills/build-pr/SKILL.md) | Write the branch's PR description as a PR Map: a review tier, evidence-backed claims, and every file bucketed read-hard / skim / skip. Best with GitHub and an authenticated `gh`; degrades to a body you paste. |
 | [`unslop`](skills/unslop/SKILL.md) | Cut AI tells from any writing and add human voice: puffery, AI vocabulary, em-dash and boldface overuse, chatbot phrases, hedging. Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack)'s `unslop` (MIT). |
@@ -76,7 +76,7 @@ with a pointer rather than maintained in parallel.
 
 ## Status
 
-`0.4.1`: six skills, installable as files or as a plugin. They are used daily in private repos,
+`0.5.0`: six skills, installable as files or as a plugin. They are used daily in private repos,
 and the public collection is what that use has settled into. Expect the interfaces to keep moving
 through `0.x`; see the [changelog](CHANGELOG.md).
 
