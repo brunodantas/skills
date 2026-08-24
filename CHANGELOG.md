@@ -6,6 +6,8 @@ All notable changes to this collection are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-23
+
 ### Changed
 
 - `to-tests`: a new step 5 refutes every case before the freeze is offered. Each case gets a
